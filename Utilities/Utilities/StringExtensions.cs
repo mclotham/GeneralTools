@@ -26,8 +26,8 @@ namespace Mcl.Utilities
         {
             var charCount = 0;
 
-            foreach (char c in str)
-                if (c == character)
+            foreach ( char c in str )
+                if ( c == character )
                     charCount++;
 
             return charCount;
@@ -40,18 +40,18 @@ namespace Mcl.Utilities
         /// <returns>
         /// <c>true</c> if there are duplicate(s) of any character in the string
         /// </returns>
-        public static bool ContainsDuplicateChars( this string str)
+        public static bool ContainsDuplicateChars( this string str )
         {
-            foreach (char c in str)
-                if (str.SpecificCharCount(c) > 1)
+            foreach ( char c in str )
+                if ( str.SpecificCharCount( c ) > 1 )
                     return true;
 
             return false;
         }
 
-        public static byte[] ToByteArray(this string str)
+        public static byte[] ToByteArray( this string str )
         {
-            return Encoding.ASCII.GetBytes(str);
+            return Encoding.ASCII.GetBytes( str );
         }
 
         /// <summary>
@@ -77,47 +77,47 @@ namespace Mcl.Utilities
         /// <returns>An array of strings</returns>
         /// <exception cref="LineBreakException">Thrown when <c>handleLongWords = HandleLongWords.ThrowException</c> 
         /// and a string token in the original string is longer than <c>maxLength</c></exception>
-        public static string[] LineBreak(this String str, string separator, int maxLength, HandleLongWords handleLongWords = HandleLongWords.CutOff)
+        public static string[] LineBreak( this String str, string separator, int maxLength, HandleLongWords handleLongWords = HandleLongWords.CutOff )
         {
-            if (str == null)
+            if ( str == null )
                 return new string[0];
 
-            var tokens = str.Split(new string[] { separator }, StringSplitOptions.RemoveEmptyEntries);
+            var tokens = str.Split( new string[] { separator }, StringSplitOptions.RemoveEmptyEntries );
             var lines = new List<string>();
 
             var line = "";
-            for (var tokenIdx = 0; tokenIdx < tokens.Length; tokenIdx++)
+            for ( var tokenIdx = 0; tokenIdx < tokens.Length; tokenIdx++ )
             {
-                var tmpBrkStr = (lines.Count() == 0 && (line.Length == 0 || line == separator)) ? "" : separator;
-                if ((line + tmpBrkStr + tokens[tokenIdx]).Length <= maxLength)
+                var tmpBrkStr = ( lines.Count() == 0 && ( line.Length == 0 || line == separator ) ) ? "" : separator;
+                if ( ( line + tmpBrkStr + tokens[tokenIdx] ).Length <= maxLength )
                 {
                     line += tmpBrkStr + tokens[tokenIdx];
-                    if (tokenIdx >= tokens.Length - 1)
-                        lines.Add(line);
+                    if ( tokenIdx >= tokens.Length - 1 )
+                        lines.Add( line );
                 }
                 else
-                if (tokens[tokenIdx].Length > maxLength)
+                if ( tokens[tokenIdx].Length > maxLength )
                 {
-                    if (handleLongWords == HandleLongWords.Allow || handleLongWords == HandleLongWords.CutOff)
+                    if ( handleLongWords == HandleLongWords.Allow || handleLongWords == HandleLongWords.CutOff )
                     {
-                        if (line.Length > 0)
-                            lines.Add(line);
+                        if ( line.Length > 0 )
+                            lines.Add( line );
                         line = tokens[tokenIdx];
-                        if (handleLongWords == HandleLongWords.CutOff && line.Length > maxLength)
-                            line = line.Substring(0, maxLength);
-                        if (tokenIdx >= tokens.Length - 1)
-                            lines.Add(line);
+                        if ( handleLongWords == HandleLongWords.CutOff && line.Length > maxLength )
+                            line = line.Substring( 0, maxLength );
+                        if ( tokenIdx >= tokens.Length - 1 )
+                            lines.Add( line );
                     }
                     else
-                        throw new LineBreakException( $"String contains word \'{tokens[tokenIdx]}\' longer that maxLength {maxLength}");
+                        throw new LineBreakException( $"String contains word \'{tokens[tokenIdx]}\' longer that maxLength {maxLength}" );
                 }
                 else
                 {
-                    if (line.Length > 0)
-                        lines.Add(line);
+                    if ( line.Length > 0 )
+                        lines.Add( line );
                     line = tokens[tokenIdx];
-                    if (tokenIdx >= tokens.Length - 1)
-                        lines.Add(line);
+                    if ( tokenIdx >= tokens.Length - 1 )
+                        lines.Add( line );
                 }
             }
 
@@ -130,13 +130,13 @@ namespace Mcl.Utilities
             {
             }
 
-            public LineBreakException(string message)
-                : base(message)
+            public LineBreakException( string message )
+                : base( message )
             {
             }
 
-            public LineBreakException(string message, Exception inner)
-                : base(message, inner)
+            public LineBreakException( string message, Exception inner )
+                : base( message, inner )
             {
             }
         }

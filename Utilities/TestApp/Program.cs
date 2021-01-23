@@ -10,7 +10,8 @@ namespace TestApp
             // Test string.LineBreaks
             ///////////////////////////////////
 
-            TestCases.TestLineBreak();
+            //TestCases.TestLineBreak();
+            TestCases.TestBaseConvert();
         }
     }
 }
