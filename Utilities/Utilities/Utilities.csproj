@@ -5,6 +5,8 @@
     <RootNamespace>Mcl.Utilities</RootNamespace>
     <Authors>Matt Lothamer</Authors>
     <Company />
+    <AssemblyVersion>1.0.0.39</AssemblyVersion>
+    <FileVersion>1.0.0.39</FileVersion>
   </PropertyGroup>
 
 </Project>
