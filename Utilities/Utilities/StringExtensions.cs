@@ -55,17 +55,17 @@ namespace Mcl.Utilities
         }
 
         /// <summary>
-        /// Breaks the string into 1 or more strings based on the delimiter and the maximum number of characters per line
+        /// Breaks the string into 1 or more strings based on the delimiter and the maximum number of characters per string
         /// </summary>
         /// <example>
         /// <code>
         /// string myString = "It has truely been a pleasure writing this method for you.";
         /// string[] myLines = myString.LineBreak(" ", 15, HandleLongWords.CutOff);
-        ///     foreach (string line in myLines)
-        ///         Console.WriteLine(line);
+        /// foreach (string line in myLines)
+        ///     Console.WriteLine(line);
         /// </code>
         /// Output:
-        /// It has truely
+        /// It has truly
         /// been a pleasure
         /// writing this
         /// method for you.
